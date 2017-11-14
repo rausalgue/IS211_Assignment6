@@ -4,6 +4,7 @@
 
 #Import needed libraries
 import conversions
+import conversions_refactored
 import unittest
 
 class KnownValue(unittest.TestCase):
@@ -93,6 +94,56 @@ class KnownValue(unittest.TestCase):
         for k, c in self.k2cKnownValues:
             result = conversions.convertKelvinToCelcius(k)
             self.assertEqual(c, result)
+
+    y2mKnownValues = (
+        (880, 0.5),
+        (1760, 1),
+        (3520, 2)
+    )
+
+    def testConvertYardsToMiles(self):
+        for y, m in self.y2mKnownValues:
+            result = conversions_refactored.convert('yards', 'miles', y)
+            self.assertEqual(m, result)
+
+    def testConvertMilesToYards(self):
+        for y, m in self.y2mKnownValues:
+            result = conversions_refactored.convert('miles', 'yards', m)
+            self.assertEqual(round(y,4), result)
+
+    me2mKnownValues = (
+        (1609.35, 1),
+        (16093.47, 10),
+        (160934.71, 100)
+    )
+
+    def testConvertMetersToMiles(self):
+        for me, m in self.me2mKnownValues:
+            result = conversions_refactored.convert('meters', 'miles', me)
+            self.assertEqual(m, result)
+
+    def testConvertMilesToMeters(self):
+        for me, m in self.me2mKnownValues:
+            result = conversions_refactored.convert('miles', 'meters', m)
+            #print 'Result: ',result
+            self.assertEqual(me, result)
+
+    me2yKnownValues = (
+        (1, 1.09),
+        (50, 54.68),
+        (150, 164.04)
+    )
+
+    def testConvertMetersToYards(self):
+        for me, y in self.me2yKnownValues:
+            result = conversions_refactored.convert('meters', 'yards', me)
+            self.assertEqual(y, result)
+
+    def testConvertYardsToMeters(self):
+        for me, y in self.me2yKnownValues:
+            result = conversions_refactored.convert('yards', 'meters', y)
+            #print 'Result: ',result
+            self.assertEqual(me, result)
 
 if __name__ == '__main__':
     unittest.main()
