@@ -145,5 +145,29 @@ class KnownValue(unittest.TestCase):
             #print 'Result: ',result
             self.assertEqual(me, result)
 
+    sameKnownValues = (
+        ('celcius', 'celcius', 32, 32),
+        ('farenheit', 'farenheit', 0, 0),
+        ('Kelvin', 'Kelvin', 273, 273),
+        ('meters', 'meters', 100, 100),
+        ('yards', 'yards', 2, 2),
+        ('miles', 'miles', 2.5, 2.5)
+    )
+
+    def testConvertReturnItself(self):
+        for fromUnit, toUnit, value, resultValue in self.sameKnownValues:
+            result = conversions_refactored.convert(fromUnit, toUnit, value)
+            self.assertEqual(resultValue,result)
+
+    def testConvertIncompatibleUnits(self):
+        self.assertRaises(conversions_refactored.ConversionNotPossible,
+                          conversions_refactored.convert,
+                          'Kelvin', 'Meters', 0
+                          )
+        self.assertRaises(conversions_refactored.ConversionNotPossible,
+                          conversions_refactored.convert,
+                          'Yards', 'Kelvin', 0
+                          )
+
 if __name__ == '__main__':
     unittest.main()
