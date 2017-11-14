@@ -5,7 +5,7 @@
 import conversions_refactored
 
 def main():
-    value = conversions_refactored.convert('Celcius','Miles',100)
+    value = conversions_refactored.convert('Celcius','Farenheit',155)
 
     print 'Converted Value: ',value
 
