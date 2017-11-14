@@ -50,10 +50,49 @@ def convert(fromUnit, toUnit, value):
             raise ConversionNotPossible, "Error: Incompatible Units"
 
     if isTempFrom and isTempTo:
-        print 'Run Temp Conversion'
+        #All the cases
+        if fromUnit.lower() == 'celcius' and toUnit.lower() == 'kelvin':
+            convertedValue = value + 273.15
+
+        elif fromUnit.lower() == 'celcius' and toUnit.lower() == 'farenheit':
+            convertedValue = value * 9 / 5 + 32
+            #print 'c - f',convertedValue
+
+        elif fromUnit.lower() == 'kelvin' and toUnit.lower() == 'celcius':
+            convertedValue = value - 273.15
+
+        elif fromUnit.lower() == 'kelvin' and toUnit.lower() == 'farenheit':
+            convertedValue = value * 9 / 5 - 459.67
+
+        elif fromUnit.lower() == 'farenheit' and toUnit.lower() == 'celcius':
+            convertedValue = (value - 32) * 5 / 9
+
+        elif fromUnit.lower() == 'farenheit' and toUnit.lower() == 'kelvin':
+            convertedValue = (value + 459.67) * 5 / 9
+
+        return round(convertedValue,2)
+
 
     if isDistFrom and isDistTo:
-        print 'Run Distance Conversion'
+        if fromUnit.lower() == 'miles' and toUnit.lower() == 'yards':
+            convertedValue = value * 1760
+
+        elif fromUnit.lower() == 'miles' and toUnit.lower() == 'meters':
+            convertedValue = value / 0.00062137
+
+        elif fromUnit.lower() == 'yards' and toUnit.lower() == 'miles':
+            convertedValue = value / 1760
+
+        elif fromUnit.lower() == 'yards' and toUnit.lower() == 'meters':
+            convertedValue = value / 1.0936
+
+        elif fromUnit.lower() == 'meters' and toUnit.lower() == 'miles':
+            convertedValue = value * 0.00062137
+
+        elif fromUnit.lower() == 'meters' and toUnit.lower() == 'yards':
+            convertedValue = value * 1.0936
+
+        return round(convertedValue,2)
 
     raise ConversionNotPossible, "Error: Cannot Convert Distance and Temperature"
 
