@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """Assignemnt Week Six"""
 
-def convertCelsiusToKelvin():
+def convertCelsiusToKelvin(Value):
     """Converts Celcius to Kelvin
 
     Args:
@@ -12,9 +12,12 @@ def convertCelsiusToKelvin():
         convertedValue: Kelvin Value
     """
 
-    convertedValue = 0.0
+    convertedValue = Value + 273.15
 
-def convertCelsiusToFahrenheit():
+    #convertedValue = 0.0
+    return round(convertedValue, 2)
+
+def convertCelsiusToFahrenheit(Value):
     """Converts Celcius to Fahrenheit
 
     Args:
@@ -24,5 +27,33 @@ def convertCelsiusToFahrenheit():
         convertedValue: Farenheit Value
     """
 
-    convertedValue = 0.0
+    convertedValue = Value * 9/5 + 32
 
+    #convertedValue = 0.0
+    return round(convertedValue, 2)
+
+def convertFahrenheitToCelcius(Value):
+    convertedValue = float((Value - 32) * 5/9)
+    #print convertedValue
+
+    #convertedValue = 0.0
+    #print 'convertedValue: ',convertedValue
+    return round(convertedValue, 2)
+
+def convertFahrenheitToKelvin(Value):
+    convertedValue = (Value + 459.67) * 5/9
+
+    #convertedValue = 0.0
+    return round(convertedValue, 2)
+
+def convertKelvinToFarenheit(Value):
+    convertedValue = Value * 9/5 - 459.67
+
+    #convertedValue = 0.0
+    return round(convertedValue, 2)
+
+def convertKelvinToCelcius(Value):
+    convertedValue = Value - 273.15
+
+    #convertedValue = 0.0
+    return round(convertedValue, 2)
