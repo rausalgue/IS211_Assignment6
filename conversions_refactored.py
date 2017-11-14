@@ -8,8 +8,8 @@ class ConversionNotPossible(Exception):
 def convert(fromUnit, toUnit, value):
     """Converts Values
 
-        Check that all temperature conversions are working
-        Check that all distance conversions are working
+        * Check that all temperature conversions are working
+        * Check that all distance conversions are working
         * Check that converting from one unit to itself returns the same value for all units
         * Check that converting from incompatible units will raise a ConversionNotPossible exception
         * which should be defined in the conversions_refactored.py file)
@@ -75,13 +75,13 @@ def convert(fromUnit, toUnit, value):
 
     if isDistFrom and isDistTo:
         if fromUnit.lower() == 'miles' and toUnit.lower() == 'yards':
-            convertedValue = value * 1760
+            convertedValue = float(value) * 1760
 
         elif fromUnit.lower() == 'miles' and toUnit.lower() == 'meters':
             convertedValue = value / 0.00062137
 
         elif fromUnit.lower() == 'yards' and toUnit.lower() == 'miles':
-            convertedValue = value / 1760
+            convertedValue = float(value) / 1760
 
         elif fromUnit.lower() == 'yards' and toUnit.lower() == 'meters':
             convertedValue = value / 1.0936
